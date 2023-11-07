@@ -49,16 +49,17 @@ void ATantrumPlayerController::RequestMoveRight(float AxisValue)
 
 void ATantrumPlayerController::RequestLookUp(float AxisValue)
 {
-	UE_LOG(LogTemp, Warning, TEXT("AxisValueUp %.2f"), AxisValue);	AddPitchInput(AxisValue * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+	//UE_LOG(LogTemp, Warning, TEXT("AxisValueUp %.2f"), AxisValue);	
+	AddPitchInput(AxisValue * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 
-	UE_LOG(LogTemp, Warning, TEXT("ControlRotationPitch %.2f"), GetPawn()->GetControlRotation().Pitch);
+	//UE_LOG(LogTemp, Warning, TEXT("ControlRotationPitch %.2f"), GetPawn()->GetControlRotation().Pitch);
 }
 
 void ATantrumPlayerController::RequestLookRight(float AxisValue)
 {
-	UE_LOG(LogTemp, Warning, TEXT("AxisValueRight %.2f"), AxisValue);
+	//UE_LOG(LogTemp, Warning, TEXT("AxisValueRight %.2f"), AxisValue);
 	AddYawInput(AxisValue * BaseLookRightRate * GetWorld()->GetDeltaSeconds());
-	UE_LOG(LogTemp, Warning, TEXT("AxisValueRightAfterCalculation %.2f"), AxisValue * BaseLookRightRate * GetWorld()->GetDeltaSeconds());
+	//UE_LOG(LogTemp, Warning, TEXT("AxisValueRightAfterCalculation %.2f"), AxisValue * BaseLookRightRate * GetWorld()->GetDeltaSeconds());
 
 }
 
