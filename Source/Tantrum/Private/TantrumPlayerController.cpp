@@ -96,12 +96,18 @@ void ATantrumPlayerController::BeginPlay()
 
 void ATantrumPlayerController::RequestMoveForward(float AxisValue)
 {
+	if (!GameModeRef || GameModeRef->GetCurrentGameState() != EGameState::Playing) { return; }
+	if (AxisValue == 0.0f) { return; }
+
 	FRotator const ControlSpaceRot = GetControlRotation();
 	GetPawn()->AddMovementInput(FRotationMatrix(ControlSpaceRot).GetScaledAxis(EAxis::X), AxisValue);
 }
 
 void ATantrumPlayerController::RequestMoveRight(float AxisValue)
 {
+	if (!GameModeRef || GameModeRef->GetCurrentGameState() != EGameState::Playing) { return; }
+	if (AxisValue == 0.0f) { return; }
+
 	FRotator const ControlSpaceRot = GetControlRotation();
 	GetPawn()->AddMovementInput(FRotationMatrix(ControlSpaceRot).GetScaledAxis(EAxis::Y), AxisValue);
 }
@@ -118,6 +124,8 @@ void ATantrumPlayerController::RequestLookRight(float AxisValue)
 
 void ATantrumPlayerController::RequestJumpStart()
 {
+	if (!GameModeRef || GameModeRef->GetCurrentGameState() != EGameState::Playing) { return; }
+
 	if (GetCharacter())
 	{
 		GetCharacter()->Jump();
@@ -134,6 +142,8 @@ void ATantrumPlayerController::RequestJumpStop()
 
 void ATantrumPlayerController::RequestCrouchStart()
 {
+	if (!GameModeRef || GameModeRef->GetCurrentGameState() != EGameState::Playing) { return; }
+
 	if (!GetCharacter()->GetCharacterMovement()->IsMovingOnGround()) { return; }
 	if (GetCharacter())
 	{
