@@ -12,10 +12,6 @@ void ATantrumGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	FInputModeGameOnly InputMode;
-	PC->SetInputMode(InputMode);
-	PC->SetShowMouseCursor(false);
-
 	CurrentGameState = EGameState::Waiting;
 	DisplayCountdown();
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ATantrumGameModeBase::StartGame, GameCountdownDuration, false);
